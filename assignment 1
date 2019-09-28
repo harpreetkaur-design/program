@@ -1,0 +1,83 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int main ()
+{
+    string option;
+    string hk,pf ="",I="abcdefghijklmnopqrstuvwxyz";
+    string decryption1;
+    int ps,i,j,k,l;
+    cout << "Do you want to encrypt or decrypt? \n";
+    cin >>  option;
+
+    if (option == "encrypt")
+    {
+        cout << "What do you want to encrypt \n";
+        cin>>hk;
+        cout << "Value for Shift: \n";
+        cin>>ps;
+            for( i=0;i<hk.length();i++)
+    {
+        for( j=0;j<26;j++)
+        {
+            if(hk[i]==I[j])
+            {
+                if((j+ps)>25)
+                {
+                    int t=(j+ps-1)-25;
+                  pf+=I[t];
+                }
+                
+                else
+                {
+                    pf+=I[j+ps];
+                }
+            }
+  
+        }
+       
+    }
+       cout<<"Encryption : "<<pf;
+
+        
+        
+    }
+pf="";
+    if (option == "decrypt")
+    {
+        cout << "What do you want to decrypt \n";
+        cin>>hk;
+        cout << "Value for Shift: \n";
+        cin>ps;
+     for( k=0;k<hk.length();k++)
+    {   // cout<<"\ns2 : "<<s2[k];
+        for( l=0;l<26;l++)
+        {
+            if(hk[k]==I[l])
+            {
+                if(l-ps<0)
+                {
+                    int t=(l-ps)-(2*(l-ps));
+                    pf+=I[26-t];
+                }
+                else
+                {
+                    pf+=I[l-ps];
+                }
+                               
+                                 
+
+            }
+            
+        }
+    }
+    cout<<"Decryption : "<<pf;
+
+ 
+ 
+    }
+    return 0;
+}
